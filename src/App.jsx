@@ -1,39 +1,81 @@
+import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { useEffect, useState } from 'react';
 
 
 function App() { 
-  const [data, setData]=useState([]);
-  const getData = () =>{
 
+  const [user, setUser]= useState(
+    {
+      email: "davizolin93@gmail.com",
+      password: "DEV'S7@!"
+    }
+  )
+
+  const postUser=()=>{
     axios
-    .get('https://pokeapi.co/api/v2/pokemon/')
+    .post('http://127.0.0.1:3333/api/v1/user/login', user)
     .then((resp)=>{
       console.log(resp)
-      setData(resp.data)
     })
-    .catch((error)=>{
-      console.log(error)
+    .catch((error)=>console.log(error))
+  }
+
+  useEffect(()=>{
+    postUser()
+  },[])
+
+  const onchange = (e)=>{
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
     })
   }
-  useEffect(()=>{
-    getData()
-  }, [])
+  const onsubmit=(e)=>{
+    e.preventDefault();
+    console.log(user)
+  }
+  // const [data, setData]=useState("");
+  // const getData = () =>{
+
+  //   axios
+  //   .get('https://pokeapi.co/api/v2/pokemon/')
+  //   .then((resp)=>{
+  //     // console.log(resp)
+  //     setData(resp.data.results.map((i)=>{
+  //       return i.name
+  //     }))
+  //     console.log(data)
+  //   })
+  //   .catch((error)=>{
+  //     console.log(error)
+  //   })
+  // }
+  // useEffect(()=>{
+  //   getData()
+  // }, [])
 
   return (
     <>
-    {data.data?.map((item)=>{
-      return <div className="box">
-        {item.map((i)=>{
-          return <h1>{item.name}</h1>
-        })}
-        
-      </div>
-      
-    })}
-    {/* <div className="App">
- 
+    <div className="App">
+      <form action="" style={{padding:"20px",display:"flex", 
+      flexDirection:"column", 
+      justifyContent:"center",
+      alignContent:"center",
+      gap:"20px",
+      width:"100%"}} onSubmit={onsubmit}>
+        <input style={{padding:"10px",width:"280px", fontSize:"20px"}} name="email" value={user.email} type='text' placeholder='E-mail' onChange={onchange}/>
+        <input style={{padding:"10px", width:"280px", fontSize:"20px"}} name="password" value={user.password} type="password" onChange={onchange} placeholder='password'/>
+        <button type='submit' style={{padding:"10px",backgroundColor:"blue",width:"180px", color:"white"}}>Envoyer</button> 
+      </form>
+
+    {/* {data.data?.map((i)=>{
+      return <div>
+        {i.name}</div>
+    })} */}
+     
+{/*  
          <div className='box-image'> 
         <img id='image' src='./logo192.png' alt="img"/>
     </div>     
@@ -43,8 +85,8 @@ function App() {
       </div>
       <div className='btn'>
         <button id='button'>Get other pokemon</button>
-      </div>
-    </div> */}
+  </div>*/}
+    </div> 
   </>);
 }
 
