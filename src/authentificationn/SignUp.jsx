@@ -26,8 +26,8 @@ const Signup = ({visible})=>{
     alignContent:"center",
     gap:"20px",
     width:"100%"}} onSubmit={onsubmit}>
-      <input style={{padding:"10px",width:"280px", fontSize:"20px"}} name="email" value={adress} onChange={(e)=>setadress(e.target.value)} type='text' placeholder='E-mail' />
-      <input style={{padding:"10px", width:"280px", fontSize:"20px"}} name="password" value={pwd} onChange={(e)=>setpwd(e.target.value)}  type="password"  placeholder='password'/>
+      <input style={{padding:"12px",width:"280px", fontSize:"20px"}} name="email" value={adress} onChange={(e)=>setadress(e.target.value)} type='text' placeholder='E-mail' />
+      <input style={{padding:"12px", width:"280px", fontSize:"20px"}} name="password" value={pwd} onChange={(e)=>setpwd(e.target.value)}  type="password"  placeholder='password'/>
       <button type='submit' style={{padding:"10px",backgroundColor:"blue",width:"180px", color:"white"}}>Envoyer</button> 
     </form>
     </div>) : "";
