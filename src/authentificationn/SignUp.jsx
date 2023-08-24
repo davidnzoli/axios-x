@@ -17,7 +17,7 @@ const Signup = ({visible})=>{
 
         axios
         .post("http://127.0.0.1:3333/api/v1/user/create", items)
-        .then()
+        .then(response => console.log(response))
     .catch(error=> console.log(error))}
     return (visible ) ? (<div className="login">
     <form action="" style={{padding:"20px",display:"flex", 
