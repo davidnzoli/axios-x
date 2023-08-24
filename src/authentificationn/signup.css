@@ -1,0 +1,14 @@
+.login{
+    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(224, 223, 223);
+    gap: 3px;
+    position: fixed;
+    left: 500px;
+    top: 100px;
+    padding: 20px;
+  }
